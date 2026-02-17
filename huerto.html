@@ -13,25 +13,13 @@
     >
       <a-marker preset="hiro">
 
-        <!-- TALLO -->
-        <a-cylinder
-          position="0 0.5 0"
-          radius="0.05"
-          height="1"
-          color="#2d8a2d"
-        ></a-cylinder>
-
-        <!-- HOJAS -->
-        <a-sphere
-          position="-0.3 0.8 0"
-          radius="0.2"
-          color="#3cb34a"
-        ></a-sphere>
-        <a-sphere
-          position="0.3 0.9 0"
-          radius="0.15"
-          color="#3cb34a"
-        ></a-sphere>
+        <!-- MODELO 3D REAL DE TOMATE -->
+        <a-entity
+          gltf-model="url(tomato_plant.glb)"
+          position="0 0 0"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0"
+        ></a-entity>
 
         <!-- NOMBRE CIENTÍFICO -->
         <a-text

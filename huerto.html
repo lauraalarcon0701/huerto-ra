@@ -11,10 +11,9 @@
       embedded
       arjs="sourceType: webcam; debugUIEnabled: false;"
     >
-      <!-- MARCADOR: cuando apuntes aquí aparece la planta -->
       <a-marker preset="hiro">
 
-        <!-- PLANTA: cilindro verde simulando tallo -->
+        <!-- TALLO -->
         <a-cylinder
           position="0 0.5 0"
           radius="0.05"
@@ -22,27 +21,61 @@
           color="#2d8a2d"
         ></a-cylinder>
 
-        <!-- HOJA izquierda -->
+        <!-- HOJAS -->
         <a-sphere
           position="-0.3 0.8 0"
           radius="0.2"
           color="#3cb34a"
         ></a-sphere>
-
-        <!-- HOJA derecha -->
         <a-sphere
           position="0.3 0.9 0"
           radius="0.15"
           color="#3cb34a"
         ></a-sphere>
 
-        <!-- TEXTO con nombre -->
+        <!-- NOMBRE CIENTÍFICO -->
         <a-text
-          value="Planta del huerto\nBiodiversidad local"
-          position="0 1.5 0"
+          value="Solanum lycopersicum"
+          position="0 1.6 0"
           align="center"
           color="#ffffff"
-          scale="0.8 0.8 0.8"
+          scale="1 1 1"
+        ></a-text>
+
+        <!-- NOMBRE COMÚN -->
+        <a-text
+          value="Tomate"
+          position="0 1.4 0"
+          align="center"
+          color="#ffff00"
+          scale="0.7 0.7 0.7"
+        ></a-text>
+
+        <!-- FAMILIA -->
+        <a-text
+          value="Familia: Solanaceae"
+          position="0 1.2 0"
+          align="center"
+          color="#aaffaa"
+          scale="0.6 0.6 0.6"
+        ></a-text>
+
+        <!-- NIVEL BIODIVERSIDAD -->
+        <a-text
+          value="Nivel: Especie"
+          position="0 1.0 0"
+          align="center"
+          color="#00ccff"
+          scale="0.6 0.6 0.6"
+        ></a-text>
+
+        <!-- DATO ECOLÓGICO -->
+        <a-text
+          value="Polinizacion por insectos\nAtrae abejas y abejorros"
+          position="0 0.7 0"
+          align="center"
+          color="#ffaa00"
+          scale="0.55 0.55 0.55"
         ></a-text>
 
       </a-marker>
@@ -50,4 +83,10 @@
       <a-entity camera></a-entity>
     </a-scene>
   </body>
+</html>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+
 </html>

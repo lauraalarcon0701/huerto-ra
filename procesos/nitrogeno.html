@@ -5,26 +5,19 @@
     <title>Huerto RA - Ciclo del Nitrógeno</title>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
     <script>
-    // Componente que lee datos de especies.json
     AFRAME.registerComponent('load-nitrogen-data', {
       init: function() {
         fetch('../especies.json')
           .then(response => response.json())
           .then(data => {
             const especies = data.huerto.especies;
-            
-            // Construir texto con info de nitrógeno de cada especie
             let textoNitrogeno = 'CICLO DEL NITROGENO\n\n';
             especies.forEach(especie => {
               textoNitrogeno += especie.nombre_comun + ':\n';
               textoNitrogeno += especie.ciclo_nitrogeno + '\n\n';
             });
-            
             document.getElementById('info-nitrogeno').setAttribute('value', textoNitrogeno);
-            
-            // Info de procesos microscópicos
             const micro = data.huerto.procesos_microscopicos.bacterias_nitrogeno;
             document.getElementById('bacterias').setAttribute('value', 'Bacterias: ' + micro);
           })
@@ -34,7 +27,6 @@
       }
     });
     
-    // Componente de animación de flujo
     AFRAME.registerComponent('nitrogen-flow', {
       init: function() {
         this.tick = AFRAME.utils.throttleTick(this.tick, 50, this);
@@ -53,99 +45,92 @@
       load-nitrogen-data
     >
       <a-marker preset="hiro">
+        <!-- CONTENEDOR ROTADO PARA PANTALLA VERTICAL -->
+        <a-entity rotation="-90 0 0" position="0 0 0">
 
-        <!-- SUELO (base) -->
-        <a-box 
-          position="0 0 0" 
-          width="1.5" 
-          height="0.2" 
-          depth="1.5" 
-          color="#8B4513"
-          opacity="0.8"
-        ></a-box>
+          <!-- SUELO -->
+          <a-box 
+            position="0 0 0" 
+            width="1.5" 
+            height="0.2" 
+            depth="1.5" 
+            color="#8B4513"
+            opacity="0.8"
+          ></a-box>
 
-        <!-- BACTERIA 1 (esfera animada) -->
-        <a-sphere 
-          position="-0.4 0.3 0" 
-          radius="0.08" 
-          color="#00ff00"
-          nitrogen-flow
-        ></a-sphere>
+          <!-- BACTERIAS ANIMADAS -->
+          <a-sphere 
+            position="-0.4 0.3 0" 
+            radius="0.08" 
+            color="#00ff00"
+            nitrogen-flow
+          ></a-sphere>
+          <a-sphere 
+            position="0.4 0.3 0" 
+            radius="0.08" 
+            color="#00ff00"
+            nitrogen-flow
+          ></a-sphere>
+          <a-sphere 
+            position="0 0.3 0.4" 
+            radius="0.08" 
+            color="#00ff00"
+            nitrogen-flow
+          ></a-sphere>
 
-        <!-- BACTERIA 2 -->
-        <a-sphere 
-          position="0.4 0.3 0" 
-          radius="0.08" 
-          color="#00ff00"
-          nitrogen-flow
-        ></a-sphere>
+          <!-- FLECHAS DE FLUJO -->
+          <a-cylinder
+            position="-0.4 0.8 0"
+            radius="0.02"
+            height="0.5"
+            color="#ffff00"
+            opacity="0.7"
+          ></a-cylinder>
+          <a-cylinder
+            position="0.4 0.8 0"
+            radius="0.02"
+            height="0.5"
+            color="#ffff00"
+            opacity="0.7"
+          ></a-cylinder>
 
-        <!-- BACTERIA 3 -->
-        <a-sphere 
-          position="0 0.3 0.4" 
-          radius="0.08" 
-          color="#00ff00"
-          nitrogen-flow
-        ></a-sphere>
+          <!-- RAÍCES -->
+          <a-cylinder
+            position="0 0.1 0"
+            radius="0.03"
+            height="0.3"
+            color="#654321"
+          ></a-cylinder>
 
-        <!-- FLECHA DE FLUJO 1 -->
-        <a-cylinder
-          position="-0.4 0.8 0"
-          radius="0.02"
-          height="0.5"
-          color="#ffff00"
-          rotation="0 0 0"
-          opacity="0.7"
-        ></a-cylinder>
+          <!-- TEXTOS -->
+          <a-text
+            value="CICLO DEL NITROGENO"
+            position="0 1.5 0"
+            align="center"
+            color="#ffffff"
+            scale="0.7 0.7 0.7"
+          ></a-text>
 
-        <!-- FLECHA DE FLUJO 2 -->
-        <a-cylinder
-          position="0.4 0.8 0"
-          radius="0.02"
-          height="0.5"
-          color="#ffff00"
-          rotation="0 0 0"
-          opacity="0.7"
-        ></a-cylinder>
+          <a-text
+            id="bacterias"
+            value="Cargando..."
+            position="0 1.2 0"
+            align="center"
+            color="#00ff00"
+            scale="0.45 0.45 0.45"
+          ></a-text>
 
-        <!-- RAÍCES (cilindros hacia abajo) -->
-        <a-cylinder
-          position="0 0.1 0"
-          radius="0.03"
-          height="0.3"
-          color="#654321"
-        ></a-cylinder>
+          <a-text
+            id="info-nitrogeno"
+            value="Cargando..."
+            position="0 0.8 0"
+            align="center"
+            color="#ffffff"
+            scale="0.4 0.4 0.4"
+            wrap-count="35"
+          ></a-text>
 
-        <!-- TÍTULO -->
-        <a-text
-          value="CICLO DEL NITROGENO"
-          position="0 1.8 0"
-          align="center"
-          color="#ffffff"
-          scale="0.8 0.8 0.8"
-        ></a-text>
-
-        <!-- INFO BACTERIAS -->
-        <a-text
-          id="bacterias"
-          value="Cargando..."
-          position="0 1.5 0"
-          align="center"
-          color="#00ff00"
-          scale="0.5 0.5 0.5"
-        ></a-text>
-
-        <!-- INFO ESPECIES -->
-        <a-text
-          id="info-nitrogeno"
-          value="Cargando datos..."
-          position="0 -0.5 0"
-          align="center"
-          color="#ffffff"
-          scale="0.45 0.45 0.45"
-          wrap-count="40"
-        ></a-text>
-
+        </a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>

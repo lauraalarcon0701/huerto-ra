@@ -1,0 +1,69 @@
+{
+  "huerto": {
+    "nombre": "Huerto Escolar Ejemplo",
+    "ubicacion": "Huelva, España",
+    "especies": [
+      {
+        "id": "tomate",
+        "nombre_comun": "Tomate",
+        "nombre_cientifico": "Solanum lycopersicum",
+        "familia": "Solanaceae",
+        "tipo": "Hortaliza de fruto",
+        "modelo_3d": "tomato_plant.glb",
+        "nivel_biodiversidad": "Especie",
+        "polinizadores": ["Abeja", "Abejorro"],
+        "datos_ecologicos": "Polinización por insectos. Atrae abejas y abejorros al huerto.",
+        "ciclo_nitrogeno": "Consumidor moderado de nitrógeno del suelo",
+        "ciclo_agua": "Requiere riego frecuente, transpiración alta en verano",
+        "cadena_trofica": "Productor primario. Sus frutos alimentan insectos y aves."
+      },
+      {
+        "id": "lechuga",
+        "nombre_comun": "Lechuga",
+        "nombre_cientifico": "Lactuca sativa",
+        "familia": "Asteraceae",
+        "tipo": "Hortaliza de hoja",
+        "modelo_3d": "planta-generica.glb",
+        "nivel_biodiversidad": "Especie",
+        "polinizadores": ["Autopolinización"],
+        "datos_ecologicos": "Ciclo corto de crecimiento. Alta demanda de agua.",
+        "ciclo_nitrogeno": "Alto consumidor de nitrógeno. Requiere suelo fértil.",
+        "ciclo_agua": "Transpiración constante. Raíces superficiales.",
+        "cadena_trofica": "Productor primario. Alimento de caracoles y babosas."
+      },
+      {
+        "id": "menta",
+        "nombre_comun": "Menta",
+        "nombre_cientifico": "Mentha spicata",
+        "familia": "Lamiaceae",
+        "tipo": "Hierba aromática",
+        "modelo_3d": "planta-generica.glb",
+        "nivel_biodiversidad": "Especie",
+        "polinizadores": ["Abeja", "Mariposa"],
+        "datos_ecologicos": "Planta perenne aromática. Repelente natural de plagas.",
+        "ciclo_nitrogeno": "Consumidor bajo. Mejora estructura del suelo.",
+        "ciclo_agua": "Requiere humedad constante pero sin encharcamiento.",
+        "cadena_trofica": "Productor. Sus flores atraen insectos beneficiosos."
+      }
+    ],
+    "interacciones": {
+      "competencia": [
+        "Tomate y lechuga compiten por agua en verano",
+        "Todas las especies compiten por luz solar"
+      ],
+      "mutualismo": [
+        "Menta atrae polinizadores que benefician al tomate",
+        "Bacterias del suelo fijan nitrógeno para todas las plantas"
+      ],
+      "depredacion": [
+        "Mariquitas controlan pulgones en lechuga",
+        "Caracoles se alimentan de lechuga joven"
+      ]
+    },
+    "procesos_microscopicos": {
+      "bacterias_nitrogeno": "Rhizobium y Nitrosomonas presentes en el suelo",
+      "hongos_micorrizas": "Simbiosis con raíces de tomate",
+      "descomponedores": "Lombrices y hongos descomponen materia orgánica"
+    }
+  }
+}
